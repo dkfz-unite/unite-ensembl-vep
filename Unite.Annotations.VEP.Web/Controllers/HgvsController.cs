@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Unite.Annotations.VEP.Web.Controllers.Extensions;
 using Unite.Annotations.VEP.Web.Converters;
 using Unite.Annotations.VEP.Web.Services;
 using Unite.Annotations.VEP.Web.Services.Enums;
@@ -68,7 +69,26 @@ namespace Unite.Annotations.VEP.Web.Controllers
         [Consumes("text/plain")]
         public async Task<ActionResult> Post()
         {
-            return BadRequest("Not implemented");
+            try
+            {
+                var inputs = await Request.Body.ReadAllLinesAsync();
+
+                var pairs = inputs.Select(input => (Hgvs: input, Vep: HgvsInputConverter.ToVep(input)));
+
+                var input = string.Join(Environment.NewLine, pairs.Select(pair => pair.Vep));
+
+                var vepOutput = _annotationService.Annotate(input, Format.JSON);
+
+                var hgvsOutput = RestoreHgvsInput(vepOutput, pairs);
+
+                var json = VepJsonHelper.FixJson(hgvsOutput);
+
+                return Content(json, "application/json");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 

@@ -6,7 +6,7 @@ namespace Unite.Annotations.VEP.Web.Controllers.Extensions
 {
     public static class StreamExtensions
     {
-        public static async Task<string[]> ReadAllLines(this Stream stream)
+        public static async Task<string[]> ReadAllLinesAsync(this Stream stream)
         {
             using (var reader = new StreamReader(stream))
             {
