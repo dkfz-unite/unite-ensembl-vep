@@ -27,7 +27,7 @@ namespace Unite.Annotations.VEP.Web.Services
 
 
         #region IDisposable
-        public void Dispose()
+        public virtual void Dispose()
         {
             if (File.Exists(Path))
             {
