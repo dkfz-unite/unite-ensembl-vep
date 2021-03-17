@@ -7,7 +7,7 @@ namespace Unite.Annotations.VEP.Web.Services
         public static readonly string Cache = "--cache";
         public static readonly string Offlie = "--offline";
         public static readonly string Overwrite = "--force_overwrite";
-        public static readonly string Data = "--symbol --biotype";
+        public static readonly string Data = "--symbol --biotype --regulatory";
 
 
         public static string Input(string file)
