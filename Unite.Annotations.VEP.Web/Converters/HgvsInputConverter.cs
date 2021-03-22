@@ -7,7 +7,7 @@ namespace Unite.Annotations.VEP.Web.Converters
     {
         private const string _pattern = @"^([a-zA-Z0-9_\-\.]*):([a-z])\.([0-9]*)([ACGTNacgtn]*)>([ACGTNacgtn]*):?(.*)";
 
-        public static string ToVep(string hgvs)
+        public static string ToVcf(string hgvs)
         {
             try
             {
@@ -19,7 +19,7 @@ namespace Unite.Annotations.VEP.Web.Converters
                 var referenceBase = match.Groups[4].Value;
                 var alternateBase = match.Groups[5].Value;
 
-                var vep = $"{chromosome} {position} {position} {referenceBase}/{alternateBase}";
+                var vep = $"{chromosome}\t{position}\t.\t{referenceBase}\t{alternateBase}";
 
                 return vep;
             }

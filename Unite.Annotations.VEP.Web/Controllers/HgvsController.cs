@@ -25,11 +25,11 @@ namespace Unite.Annotations.VEP.Web.Controllers
         {
             try
             {
-                var pair = (Hgvs: input, Vep: HgvsInputConverter.ToVep(input));
+                var pair = (Hgvs: input, Vcf: HgvsInputConverter.ToVcf(input));
 
-                var vepOutput = _annotationService.Annotate(pair.Vep, Format.JSON);
+                var vcfOutput = _annotationService.Annotate(pair.Vcf, Format.JSON);
 
-                var hgvsOutput = RestoreHgvsInput(vepOutput, pair);
+                var hgvsOutput = RestoreHgvsInput(vcfOutput, pair);
 
                 var json = hgvsOutput;
 
@@ -47,13 +47,13 @@ namespace Unite.Annotations.VEP.Web.Controllers
         {
             try
             {
-                var pairs = inputs.Select(input => (Hgvs: input, Vep: HgvsInputConverter.ToVep(input)));
+                var pairs = inputs.Select(input => (Hgvs: input, Vcf: HgvsInputConverter.ToVcf(input)));
 
-                var input = string.Join(Environment.NewLine, pairs.Select(pair => pair.Vep));
+                var input = string.Join(Environment.NewLine, pairs.Select(pair => pair.Vcf));
 
-                var vepOutput = _annotationService.Annotate(input, Format.JSON);
+                var vcfOutput = _annotationService.Annotate(input, Format.JSON);
 
-                var hgvsOutput = RestoreHgvsInput(vepOutput, pairs);
+                var hgvsOutput = RestoreHgvsInput(vcfOutput, pairs);
 
                 var json = VepJsonHelper.FixJson(hgvsOutput);
 
@@ -73,13 +73,13 @@ namespace Unite.Annotations.VEP.Web.Controllers
             {
                 var inputs = await Request.Body.ReadAllLinesAsync();
 
-                var pairs = inputs.Select(input => (Hgvs: input, Vep: HgvsInputConverter.ToVep(input)));
+                var pairs = inputs.Select(input => (Hgvs: input, Vcf: HgvsInputConverter.ToVcf(input)));
 
-                var input = string.Join(Environment.NewLine, pairs.Select(pair => pair.Vep));
+                var input = string.Join(Environment.NewLine, pairs.Select(pair => pair.Vcf));
 
-                var vepOutput = _annotationService.Annotate(input, Format.JSON);
+                var vcfOutput = _annotationService.Annotate(input, Format.JSON);
 
-                var hgvsOutput = RestoreHgvsInput(vepOutput, pairs);
+                var hgvsOutput = RestoreHgvsInput(vcfOutput, pairs);
 
                 var json = VepJsonHelper.FixJson(hgvsOutput);
 
@@ -92,20 +92,20 @@ namespace Unite.Annotations.VEP.Web.Controllers
         }
 
 
-        private string RestoreHgvsInput(string outputContent, (string Hgvs, string Vep) input)
+        private string RestoreHgvsInput(string outputContent, (string Hgvs, string Vcf) input)
         {
-            return outputContent.Replace(input.Vep, input.Hgvs);
+            return outputContent.Replace(input.Vcf, input.Hgvs);
         }
 
-        private string RestoreHgvsInput(string output, IEnumerable<(string Hgvs, string Vep)> inputs)
+        private string RestoreHgvsInput(string output, IEnumerable<(string Hgvs, string Vcf)> inputs)
         {
             var content = new string(output);
 
             foreach (var input in inputs)
             {
-                if (content.Contains(input.Vep))
+                if (content.Contains(input.Vcf))
                 {
-                    content = content.Replace(input.Vep, input.Hgvs);
+                    content = content.Replace(input.Vcf, input.Hgvs);
                 }
             }
 
