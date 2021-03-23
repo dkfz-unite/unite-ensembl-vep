@@ -8,6 +8,7 @@ namespace Unite.Annotations.VEP.Web.Services
         public static readonly string Offlie = "--offline";
         public static readonly string Overwrite = "--force_overwrite";
         public static readonly string Data = "--symbol --biotype --regulatory --numbers --domains --protein";
+        //public static readonly string Data = "--symbol --biotype --regulatory --protein";
 
 
         public static string Input(string file)
