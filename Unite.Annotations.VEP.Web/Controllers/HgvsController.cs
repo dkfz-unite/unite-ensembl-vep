@@ -47,6 +47,8 @@ namespace Unite.Annotations.VEP.Web.Controllers
         {
             try
             {
+                Console.WriteLine($"Annotating {inputs?.Length ?? 0} mutations");
+
                 var pairs = inputs.Select(input => (Hgvs: input, Vcf: HgvsInputConverter.ToVcf(input)));
 
                 var input = string.Join(Environment.NewLine, pairs.Select(pair => pair.Vcf));
@@ -56,6 +58,8 @@ namespace Unite.Annotations.VEP.Web.Controllers
                 var hgvsOutput = RestoreHgvsInput(vcfOutput, pairs);
 
                 var json = VepJsonHelper.FixJson(hgvsOutput);
+
+                Console.WriteLine(json);
 
                 return Content(json, "application/json");
             }
