@@ -29,10 +29,10 @@ namespace Unite.Annotations.VEP.Web.Services
         #region IDisposable
         public virtual void Dispose()
         {
-            if (File.Exists(Path))
-            {
-                File.Delete(Path);
-            }
+            //if (File.Exists(Path))
+            //{
+            //    File.Delete(Path);
+            //}
         }
         #endregion
     }
