@@ -19,7 +19,7 @@ namespace Unite.Annotations.VEP.Web.Converters
                 var referenceBase = match.Groups[4].Value;
                 var alternateBase = match.Groups[5].Value;
 
-                var vep = $"{chromosome}\t{position}\t.\t{referenceBase}\t{alternateBase}";
+                var vep = $"{chromosome} {position} . {referenceBase} {alternateBase}";
 
                 return vep;
             }
