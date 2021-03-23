@@ -47,11 +47,15 @@ namespace Unite.Annotations.VEP.Web.Controllers
         {
             try
             {
+                Console.WriteLine(string.Join(Environment.NewLine, inputs));
+
                 var pairs = inputs.Select(input => (Hgvs: input, Vcf: HgvsInputConverter.ToVcf(input)));
 
                 var input = string.Join(Environment.NewLine, pairs.Select(pair => pair.Vcf));
 
                 var vcfOutput = _annotationService.Annotate(input, Format.JSON);
+
+                Console.WriteLine(vcfOutput);
 
                 var hgvsOutput = RestoreHgvsInput(vcfOutput, pairs);
 
