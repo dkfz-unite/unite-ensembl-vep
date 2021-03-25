@@ -7,9 +7,10 @@ namespace Unite.Annotations.VEP.Web.Services
         public static readonly string Cache = "--cache";
         public static readonly string Offlie = "--offline";
         public static readonly string Overwrite = "--force_overwrite";
-        public static readonly string Data = "--symbol --biotype --regulatory --numbers --domains --protein";
-        //public static readonly string Data = "--symbol --biotype --regulatory --protein";
-
+        public static readonly string NoStats = "--no_stats";
+        public static readonly string NoIntergenic = "--no_intergenic";
+        //public static readonly string Data = "--symbol --biotype --ccds --protein --regulatory --numbers";
+        public static readonly string Data = "--symbol --biotype";
 
         public static string Input(string file)
         {
@@ -28,10 +29,15 @@ namespace Unite.Annotations.VEP.Web.Services
                    "";
         }
 
+        public static string Buffer(int size = 5000)
+        {
+            return $"--buffer_size {size}";
+        }
+
 
         public static string Default(string inputFile, string outputFile, Format format)
         {
-            return $"{Cache} {Offlie} {Overwrite} {Input(inputFile)} {Output(outputFile)} {Format(format)} {Data}";
+            return $"{Cache} {Offlie} {Overwrite} {NoStats} {NoIntergenic} {Input(inputFile)} {Output(outputFile)} {Format(format)} {Buffer(10000)} {Data}";
         }
     }
 }
