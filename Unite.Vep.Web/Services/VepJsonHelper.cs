@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
-using Unite.Annotations.VEP.Web.Services.Extensions;
+using Unite.Vep.Web.Services.Extensions;
 
-namespace Unite.Annotations.VEP.Web.Services
+namespace Unite.Vep.Web.Services
 {
     public static class VepJsonHelper
     {

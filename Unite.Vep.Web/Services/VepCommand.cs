@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
-using Unite.Annotations.VEP.Web.Services.Enums;
+using Unite.Vep.Web.Services.Enums;
 
-namespace Unite.Annotations.VEP.Web.Services
+namespace Unite.Vep.Web.Services
 {
     public static class VepCommand
     {

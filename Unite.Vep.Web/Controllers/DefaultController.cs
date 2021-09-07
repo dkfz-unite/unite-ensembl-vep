@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Unite.Annotations.VEP.Web.Controllers
+namespace Unite.Vep.Web.Controllers
 {
     [Route("/api")]
     public class DefaultController : Controller

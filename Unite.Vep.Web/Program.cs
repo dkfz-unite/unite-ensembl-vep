@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Unite.Annotations.VEP.Web
+namespace Unite.Vep.Web
 {
     public class Program
     {

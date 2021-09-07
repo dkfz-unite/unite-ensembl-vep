@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace Unite.Annotations.VEP.Web.Services.Extensions
+namespace Unite.Vep.Web.Services.Extensions
 {
     public static class StringExtensions
     {
