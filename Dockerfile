@@ -7,7 +7,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim as publish
 WORKDIR /src
 COPY . .
-RUN dotnet publish -c Release -r linux-x64 -o /app/publish
+# RUN dotnet publish -c Release -r linux-x64 -o /app/publish
+RUN dotnet publish -c Release -r linux-arm64 -o /app/publish
 
 FROM base AS final
 WORKDIR /app
