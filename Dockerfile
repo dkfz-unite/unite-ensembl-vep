@@ -1,4 +1,5 @@
-FROM ensemblorg/ensembl-vep:release_103 as base
+# FROM ensemblorg/ensembl-vep:release_103 as base
+FROM ensemblorg/ensembl-vep as base
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 EXPOSE 80
 EXPOSE 443
