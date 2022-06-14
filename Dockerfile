@@ -1,5 +1,5 @@
-# FROM ensemblorg/ensembl-vep:release_103 as base
-FROM ensemblorg/ensembl-vep as base
+FROM ensemblorg/ensembl-vep:release_103 as base
+# FROM ensemblorg/ensembl-vep as base
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 ENV ASPNETCORE_hostBuilder:reloadConfigOnChange=false
 EXPOSE 80
