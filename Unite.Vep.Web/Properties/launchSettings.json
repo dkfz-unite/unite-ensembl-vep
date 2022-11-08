@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
@@ -11,15 +11,12 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "Unite.Vep.Web": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": false,
       "applicationUrl": "http://localhost:5200",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -27,5 +24,3 @@
     }
   }
 }
-
-
