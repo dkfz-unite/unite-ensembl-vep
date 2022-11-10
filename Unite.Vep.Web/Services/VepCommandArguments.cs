@@ -9,6 +9,7 @@ namespace Unite.Vep.Web.Services
         public static readonly string Overwrite = "--force_overwrite";
         public static readonly string NoStats = "--no_stats";
         public static readonly string NoIntergenic = "--no_intergenic";
+        public static readonly string Canonical = "--canonical";
         //public static readonly string Data = "--symbol --biotype --ccds --protein --regulatory --numbers";
         public static readonly string Data = ""; //"--regulatory";
 
@@ -42,7 +43,7 @@ namespace Unite.Vep.Web.Services
 
         public static string Default(string inputFile, string outputFile, Format format)
         {
-            return $"{Cache} {Offlie} {Overwrite} {NoStats} {NoIntergenic} {Input(inputFile)} {Output(outputFile)} {Format(format)} {Buffer(20000)} {MaximumSvSize(250000000)} {Data}";
+            return $"{Cache} {Offlie} {Overwrite} {NoStats} {NoIntergenic} {Canonical} {Input(inputFile)} {Output(outputFile)} {Format(format)} {Buffer(20000)} {MaximumSvSize(250000000)} {Data}";
         }
     }
 }
