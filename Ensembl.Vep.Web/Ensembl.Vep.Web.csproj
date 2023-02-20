@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <!--<Nullable>enable</Nullable>-->
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>Unite.Vep.Web</AssemblyName>
+    <AssemblyName>Ensembl.Vep.Web</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
