@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Unite.Vep.Web.Converters
+namespace Ensembl.Vep.Web.Converters
 {
     public static class HgvsInputConverter
     {

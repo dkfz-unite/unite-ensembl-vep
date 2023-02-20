@@ -1,6 +1,6 @@
-﻿using Unite.Vep.Web.Services.Enums;
+﻿using Ensembl.Vep.Web.Services.Enums;
 
-namespace Unite.Vep.Web.Services
+namespace Ensembl.Vep.Web.Services
 {
     public static class VepCommandArguments
     {

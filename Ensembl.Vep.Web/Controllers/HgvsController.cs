@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Unite.Vep.Web.Controllers.Extensions;
-using Unite.Vep.Web.Converters;
-using Unite.Vep.Web.Services;
-using Unite.Vep.Web.Services.Enums;
+using Ensembl.Vep.Web.Controllers.Extensions;
+using Ensembl.Vep.Web.Converters;
+using Ensembl.Vep.Web.Services;
+using Ensembl.Vep.Web.Services.Enums;
 
-namespace Unite.Vep.Web.Controllers
+namespace Ensembl.Vep.Web.Controllers
 {
     [Route("/api/[controller]")]
     public class HgvsController : Controller

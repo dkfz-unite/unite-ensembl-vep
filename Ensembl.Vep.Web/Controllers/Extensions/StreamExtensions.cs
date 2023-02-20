@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Unite.Vep.Web.Controllers.Extensions
+namespace Ensembl.Vep.Web.Controllers.Extensions
 {
     public static class StreamExtensions
     {

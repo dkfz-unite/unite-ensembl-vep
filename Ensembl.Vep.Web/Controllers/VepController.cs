@@ -2,10 +2,10 @@
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Unite.Vep.Web.Services;
-using Unite.Vep.Web.Services.Enums;
+using Ensembl.Vep.Web.Services;
+using Ensembl.Vep.Web.Services.Enums;
 
-namespace Unite.Vep.Web.Controllers
+namespace Ensembl.Vep.Web.Controllers
 {
     [Route("api/[controller]")]
     public class VepController : Controller

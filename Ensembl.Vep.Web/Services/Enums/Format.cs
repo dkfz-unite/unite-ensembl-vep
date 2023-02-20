@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Unite.Vep.Web.Services.Enums
+namespace Ensembl.Vep.Web.Services.Enums
 {
     public enum Format
     {

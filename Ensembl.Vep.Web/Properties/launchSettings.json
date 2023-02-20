@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Unite.Vep.Web": {
+    "Ensembl.Vep.Web": {
       "commandName": "Project",
       "applicationUrl": "http://localhost:5200",
       "environmentVariables": {
