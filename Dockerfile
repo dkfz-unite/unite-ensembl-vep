@@ -1,4 +1,4 @@
-FROM ensemblorg/ensembl-vep:release_109.3 as base
+FROM ensemblorg/ensembl-vep:release_108.2 as base
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 ENV ASPNETCORE_hostBuilder:reloadConfigOnChange=false
 EXPOSE 80
@@ -10,7 +10,6 @@ COPY . .
 RUN dotnet publish -c Release -r linux-x64 -o /app/publish
 
 FROM base AS final
-USER root
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["/app/Ensembl.Vep.Web", "--urls", "http://0.0.0.0:80"]
