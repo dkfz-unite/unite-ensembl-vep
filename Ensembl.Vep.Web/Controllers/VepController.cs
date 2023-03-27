@@ -40,7 +40,7 @@ namespace Ensembl.Vep.Web.Controllers
             {
                 var input = string.Join(Environment.NewLine, inputs);
 
-                Console.WriteLine($"{string.Join(',' + Environment.NewLine, inputs)}");
+                Console.WriteLine($"{string.Join(',' + Environment.NewLine, inputs.Select(i => $"{i}"))}");
 
                 var output = _annotationService.Annotate(input, Format.JSON);
 
