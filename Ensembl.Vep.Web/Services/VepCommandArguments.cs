@@ -5,6 +5,7 @@ namespace Ensembl.Vep.Web.Services
     public static class VepCommandArguments
     {
         public static readonly string Cache = "--cache";
+        public static readonly string CacheDir = "--dir_cache /cache";
         public static readonly string Offlie = "--offline";
         public static readonly string Overwrite = "--force_overwrite";
         public static readonly string NoStats = "--no_stats";
@@ -43,7 +44,7 @@ namespace Ensembl.Vep.Web.Services
 
         public static string Default(string inputFile, string outputFile, Format format)
         {
-            return $"{Cache} {Offlie} {Overwrite} {NoStats} {NoIntergenic} {Canonical} {Input(inputFile)} {Output(outputFile)} {Format(format)} {Buffer(20000)} {MaximumSvSize(250000000)} {Data}";
+            return $"{Cache} {CacheDir} {Offlie} {Overwrite} {NoStats} {NoIntergenic} {Canonical} {Input(inputFile)} {Output(outputFile)} {Format(format)} {Buffer(20000)} {MaximumSvSize(250000000)} {Data}";
         }
     }
 }
