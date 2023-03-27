@@ -10,7 +10,7 @@ COPY . .
 RUN dotnet publish -c Release -r linux-x64 -o /app/publish
 
 FROM base AS final
-USER vep
+USER root
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["/app/Ensembl.Vep.Web", "--urls", "http://0.0.0.0:80"]
