@@ -6,7 +6,8 @@ namespace Ensembl.Vep.Web.Services
 {
     public abstract class VepFile : IDisposable
     {
-        private const string _cacheFolder = "/opt/vep/.vep";
+        private const string _cacheFolder = "/data";
+        // private const string _cacheFolder = "/opt/vep/.vep";
         // private const string _cacheFolder = "/app/data";
 
 
