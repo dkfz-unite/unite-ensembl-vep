@@ -10,6 +10,7 @@ COPY . .
 RUN dotnet publish -c Release -r linux-x64 -o /app/publish
 
 FROM base AS final
+USER root
 RUN mkdir /data
 RUN chmod 666 /data
 WORKDIR /app
