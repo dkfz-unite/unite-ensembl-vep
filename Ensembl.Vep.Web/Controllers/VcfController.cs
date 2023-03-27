@@ -40,8 +40,6 @@ namespace Ensembl.Vep.Web.Controllers
             {
                 var input = string.Join(Environment.NewLine, inputs);
 
-                Console.WriteLine(input);
-
                 var output = _annotationService.Annotate(input, Format.JSON);
 
                 var json = VepJsonHelper.FixJson(output);

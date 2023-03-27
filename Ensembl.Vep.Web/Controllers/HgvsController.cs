@@ -51,8 +51,6 @@ namespace Ensembl.Vep.Web.Controllers
 
                 var input = string.Join(Environment.NewLine, pairs.Select(pair => pair.Vcf));
 
-                Console.WriteLine(input);
-
                 var vcfOutput = _annotationService.Annotate(input, Format.JSON);
 
                 var hgvsOutput = RestoreHgvsInput(vcfOutput, pairs);
