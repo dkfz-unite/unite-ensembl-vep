@@ -28,6 +28,7 @@ jobs:
         with:
           context: .
           build-args: |
+            RID=linux-x64
             USER=${{ github.actor }}
             TOKEN=${{ secrets.GITHUB_TOKEN }}
           push: true

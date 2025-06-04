@@ -1,25 +1,18 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
+﻿namespace Ensembl.Vep.Web.Controllers.Extensions;
 
-namespace Ensembl.Vep.Web.Controllers.Extensions
+public static class StreamExtensions
 {
-    public static class StreamExtensions
+    public static async Task<string[]> ReadAllLinesAsync(this Stream stream)
     {
-        public static async Task<string[]> ReadAllLinesAsync(this Stream stream)
+        using var reader = new StreamReader(stream);
+        var lines = new List<string>();
+        var line = string.Empty;
+
+        while ((line = await reader.ReadLineAsync()) != null)
         {
-            using (var reader = new StreamReader(stream))
-            {
-                var lines = new List<string>();
-                var line = "";
-
-                while ((line = await reader.ReadLineAsync()) != null)
-                {
-                    lines.Add(line.Trim());
-                }
-
-                return lines.ToArray();
-            }
+            lines.Add(line.Trim());
         }
+
+        return lines.ToArray();
     }
 }

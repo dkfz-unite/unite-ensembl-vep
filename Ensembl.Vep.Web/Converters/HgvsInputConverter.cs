@@ -1,32 +1,30 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
-namespace Ensembl.Vep.Web.Converters
+namespace Ensembl.Vep.Web.Converters;
+
+public static class HgvsInputConverter
 {
-    public static class HgvsInputConverter
+    private const string _pattern = @"^([a-zA-Z0-9_\-\.]*):([a-z])\.([0-9]*)([ACGTNacgtn]*)>([ACGTNacgtn]*):?(.*)";
+
+    public static string ToVcf(string hgvs)
     {
-        private const string _pattern = @"^([a-zA-Z0-9_\-\.]*):([a-z])\.([0-9]*)([ACGTNacgtn]*)>([ACGTNacgtn]*):?(.*)";
-
-        public static string ToVcf(string hgvs)
+        try
         {
-            try
-            {
-                var match = Regex.Match(hgvs, _pattern);
+            var match = Regex.Match(hgvs, _pattern);
 
-                var chromosome = match.Groups[1].Value.Replace("chr", "");
-                var seqquenceType = match.Groups[2].Value;
-                var position = match.Groups[3].Value;
-                var referenceBase = match.Groups[4].Value;
-                var alternateBase = match.Groups[5].Value;
+            var chromosome = match.Groups[1].Value.Replace("chr", "");
+            var seqquenceType = match.Groups[2].Value;
+            var position = match.Groups[3].Value;
+            var referenceBase = match.Groups[4].Value;
+            var alternateBase = match.Groups[5].Value;
 
-                var vep = $"{chromosome} {position} . {referenceBase} {alternateBase}";
+            var vep = $"{chromosome} {position} . {referenceBase} {alternateBase}";
 
-                return vep;
-            }
-            catch
-            {
-                throw new ArgumentException($"Input hgvs code '{hgvs}' does not match the pattern '{_pattern}'");
-            }
+            return vep;
+        }
+        catch
+        {
+            throw new ArgumentException($"Input hgvs code '{hgvs}' does not match the pattern '{_pattern}'");
         }
     }
 }

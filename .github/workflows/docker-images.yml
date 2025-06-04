@@ -26,6 +26,7 @@ jobs:
           docker build \
             --platform linux/amd64 \
             -t ${{ env.REGISTRY }}/${{ env.IMAGE }}:amd64 \
+            --build-arg RID=linux-x64 \
             --build-arg USER=${{ github.actor }} \
             --build-arg TOKEN=${{ secrets.GITHUB_TOKEN }} \
             .
@@ -48,6 +49,7 @@ jobs:
           docker build \
             --platform linux/arm64 \
             -t ${{ env.REGISTRY }}/${{ env.IMAGE }}:arm64 \
+            --build-arg RID=linux-arm64 \
             --build-arg USER=${{ github.actor }} \
             --build-arg TOKEN=${{ secrets.GITHUB_TOKEN }} \
             .

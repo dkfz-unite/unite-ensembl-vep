@@ -1,75 +1,71 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Ensembl.Vep.Web.Services;
 using Ensembl.Vep.Web.Services.Enums;
 
-namespace Ensembl.Vep.Web.Controllers
+namespace Ensembl.Vep.Web.Controllers;
+
+[Route("api/[controller]")]
+public class VepController : Controller
 {
-    [Route("api/[controller]")]
-    public class VepController : Controller
+    private readonly AnnotationService _annotationService;
+
+    public VepController()
     {
-        private readonly AnnotationService _annotationService;
+        _annotationService = new AnnotationService();
+    }
 
-        public VepController()
+    [HttpGet]
+    public ActionResult Get([FromQuery]string input, [FromQuery]int grch = 37, [FromQuery]bool regulatory = false)
+    {
+        try
         {
-            _annotationService = new AnnotationService();
+            var output = _annotationService.Annotate(input, Format.VEP, grch, regulatory);
+
+            return Content(output, "text/plain");
         }
-
-        [HttpGet]
-        public ActionResult Get(string input)
+        catch (Exception ex)
         {
-            try
-            {
-                var output = _annotationService.Annotate(input, Format.VEP);
-
-                return Content(output, "text/plain");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return BadRequest(ex.Message);
         }
+    }
 
-        [HttpPost]
-        [Consumes("application/json")]
-        public ActionResult Post([FromBody] string[] inputs)
+    [HttpPost]
+    [Consumes("application/json")]
+    public ActionResult Post([FromBody]string[] inputs, [FromQuery]int grch = 37, [FromQuery]bool regulatory = false)
+    {
+        try
         {
-            try
-            {
-                var input = string.Join(Environment.NewLine, inputs);
+            var input = string.Join(Environment.NewLine, inputs);
 
-                var output = _annotationService.Annotate(input, Format.JSON);
+            var output = _annotationService.Annotate(input, Format.JSON, grch, regulatory);
 
-                var json = VepJsonHelper.FixJson(output);
+            var json = VepJsonHelper.FixJson(output);
 
-                return Content(json, "application/json");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Content(json, "application/json");
         }
-
-        [HttpPost]
-        [Consumes("text/plain")]
-        public async Task<ActionResult> Post()
+        catch (Exception ex)
         {
-            try
-            {
-                using var reader = new StreamReader(Request.Body);
+            return BadRequest(ex.Message);
+        }
+    }
 
-                var input = await reader.ReadToEndAsync();
+    [HttpPost]
+    [Consumes("text/plain")]
+    public async Task<ActionResult> Post([FromQuery]int grch = 37, [FromQuery]bool regulatory = false)
+    {
+        try
+        {
+            using var reader = new StreamReader(Request.Body);
 
-                var output = _annotationService.Annotate(input, Format.VEP);
+            var input = await reader.ReadToEndAsync();
 
-                return Content(output, "text/plain");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var output = _annotationService.Annotate(input, Format.VEP, grch, regulatory);
+
+            return Content(output, "text/plain");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
         }
     }
 }
