@@ -1,4 +1,4 @@
-FROM ensemblorg/ensembl-vep:release_113.4 as base
+FROM ensemblorg/ensembl-vep:release_116.3 as base
 ARG RID
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 ENV ASPNETCORE_hostBuilder:reloadConfigOnChange=false
